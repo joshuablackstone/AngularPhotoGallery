@@ -1,0 +1,13 @@
+Packages:
+
+AngularJS.Core
+Angular.UI.Bootstrap
+AngularJS.Route
+angular-file-upload
+toastr
+JasmineTest
+
+External Sources
+
+Scripts/loading-bar.js
+Scripts/dirPagination.js
