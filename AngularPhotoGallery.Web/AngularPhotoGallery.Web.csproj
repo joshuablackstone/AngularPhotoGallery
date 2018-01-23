@@ -161,6 +161,7 @@
     <Content Include="App\config.js" />
     <Content Include="App\controllers\PhotosListController.js" />
     <Content Include="App\main.js" />
+    <Content Include="App\services\PhotosListService.js" />
     <Content Include="App\tests\PhotosListControllerSpec.js" />
     <Content Include="App\views\pagination.html" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -239,7 +240,6 @@
     <Content Include="Views\Jasmine\SpecRunner.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App\services\" />
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>

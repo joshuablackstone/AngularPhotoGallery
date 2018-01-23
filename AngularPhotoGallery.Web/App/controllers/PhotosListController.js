@@ -3,16 +3,14 @@
 
     var photosApp = angular.module('photosApp');
 
-    photosApp.controller('PhotosListController', ['$scope', function ($scope) {
+    photosApp.controller('PhotosListController', ['$scope', 'PhotosListService', function ($scope, PhotosListService) {
         $scope.title = 'Hello World';
+        $scope.photos = [];
 
-        $scope.photos = [
-            { Title: 'Chrysanthemum', ImageUrl: 'Chrysanthemum.jpg' },
-            { Title: 'Desert', ImageUrl: 'Desert.jpg' },
-            { Title: 'Koala', ImageUrl: 'Koala.jpg' },
-            { Title: 'Hydrangeas', ImageUrl: 'Hydrangeas.jpg' },
-            { Title: 'Tulips', ImageUrl: 'Tulips.jpg' },
-            { Title: 'Lighthouse', ImageUrl: 'Lighthouse.jpg' }
-        ];
+        PhotosListService.getPhotos().then(function (response) {
+            $scope.photos = response.data;
+        }, function (error) {
+            console.error(error.data);
+        });
     }]);
 })();
