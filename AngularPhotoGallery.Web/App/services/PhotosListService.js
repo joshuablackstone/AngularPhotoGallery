@@ -1,22 +1,26 @@
 ﻿(function () {
     'use strict';
 
-    var app = angular.module('photosAppServices', []);
+    var app = angular.module('photosApp');
 
-    app.factory('PhotosListService', ['$http', '$q', function ($http, $q) {
-        return {
-            getPhotos: function () {
-                var photos = [
-                    { Title: 'Chrysanthemum', ImageUrl: 'Chrysanthemum.jpg' },
-                    { Title: 'Desert', ImageUrl: 'Desert.jpg' },
-                    { Title: 'Koala', ImageUrl: 'Koala.jpg' },
-                    { Title: 'Hydrangeas', ImageUrl: 'Hydrangeas.jpg' },
-                    { Title: 'Tulips', ImageUrl: 'Tulips.jpg' },
-                    { Title: 'Lighthouse', ImageUrl: 'Lighthouse.jpg' }
-                ];
+    app.factory('PhotosListService', ['$http', '$q', 'Upload',
+        function ($http, $q, Upload) {
+            var apiUrl = "/api/Images";
 
-                return $q.when({ data: photos });
+            return {
+                getPhotos: function () {
+                   return $http.get(apiUrl);
+                },
+                postPhoto: function (file) {
+                    return Upload.upload(
+                        {
+                            url: apiUrl + "/createImage",
+                            data: { file: file }
+                        });
+                },
+                deletePhoto: function (id) {
+                    return $http.post(apiUrl + "/deleteImage/" + id);
+                }
             }
-        }
-    }]);
+        }]);
 })();

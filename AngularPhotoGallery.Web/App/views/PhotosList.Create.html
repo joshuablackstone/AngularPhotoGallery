@@ -1,0 +1,32 @@
+﻿<div class="modal-header">
+    <button type="button" ng-click="cancel()" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h3 class="modal-title">Add Photo</h3>
+</div>
+<div class="modal-body">
+    <form name="frmSaveImage" class="form-horizontal" role="form" ng-submit="saveImage(frmSaveImage)" novalidate>
+        <div class="form-group">
+            <div class="control-label col-md-3">Select an Image</div>
+            <div class="col-md-9">
+                <div class="btn btn-success" ngf-select ng-model="model.File" name="File" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB">Select...</div>
+            </div>
+        </div>
+        <div ng-if="model.File">
+            <div class="form-group">
+                <div class="col-md-offset-3 col-sm-6 col-md-6">
+                    <div class="thumbnail">
+                        <img ngf-thumbnail="model.File" style="max-height: 225px;" />
+                        <div class="caption">
+                            File: {{model.File.name}}<br />
+                            Type: {{model.File.type}}<br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-3 col-md-9">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

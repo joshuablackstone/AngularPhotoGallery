@@ -1,24 +1,5 @@
 ﻿<div ng-app="photosApp">
-    <div ng-controller="PhotosListController">
-        <div ng-cloak class="row">
-            <div class="col-sm-6 col-md-4" ng-repeat="i in photos">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">{{i.Title}}</h3>
-                    </div>
-                    <div class="panel-body">
-                        <img ng-src="/Images/{{i.ImageUrl}}" class="img-thumbnail" />
-                    </div>
-                    <div class="panel-footer">
-                        <p>
-                            <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-pencil"></span></button>
-                            <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div ng-include="'/App/views/PhotosList.Index.html'"></div>
 </div>
 
 @section scripts{

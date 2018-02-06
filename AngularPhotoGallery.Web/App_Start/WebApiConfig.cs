@@ -10,7 +10,9 @@ namespace AngularPhotoGallery.Web
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-
+            var resolver = new Newtonsoft.Json.Serialization.DefaultContractResolver();
+            resolver.IgnoreSerializableAttribute = true;
+            config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = resolver;
             // Web API routes
             config.MapHttpAttributeRoutes();
 

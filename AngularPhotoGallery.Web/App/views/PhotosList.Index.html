@@ -1,0 +1,33 @@
+﻿<div ng-controller="PhotosListController">
+    <div class="row">
+        <div class="col-md-12">
+            <br class="clearfix" /><br class="clearfix" />
+            <button type="button" ng-click="addImage()" class="btn btn-primary">Add Image</button>
+            <br class="clearfix" /><br class="clearfix" />
+        </div>
+    </div>
+    <div ng-cloak class="row">
+        <div class="col-sm-6 col-md-4" dir-paginate="i in photos | itemsPerPage: 6" pagination-id="pagerImages">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{i.Title}}</h3>
+                </div>
+                <div class="panel-body">
+                    <img ng-src="/Images/{{i.ImageUrl}}" class="img-thumbnail" />
+                    <p>
+                        Date Created: {{i.DateCreated | date: dateFormat}}
+                    </p>
+                </div>
+                <div class="panel-footer">
+                    <p>
+                        <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-pencil"></span></button>
+                        <button type="button" class="btn btn-danger" ng-click="deleteImage(i)"><span class="glyphicon glyphicon-trash"></span></button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <dir-pagination-controls pagination-id="pagerImages"></dir-pagination-controls>
+    </div>
+</div>
