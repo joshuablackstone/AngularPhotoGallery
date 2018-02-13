@@ -7,7 +7,15 @@
         <div class="form-group">
             <div class="control-label col-md-3">Select an Image</div>
             <div class="col-md-9">
-                <div class="btn btn-success" ngf-select ng-model="model.File" name="File" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB">Select...</div>
+                <div class="btn btn-success" ngf-select ng-model="model.File" name="File" 
+                     ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="1MB" ng-required="true">Select...</div>
+                <span class="error-message" ng-show="frmSaveImage.File.$error">
+                    <br class="clearfix" />
+                    <!--<span>All Errors: {{frmSaveImage.File.$error}}</span><br />-->
+                    <span ng-show="frmSaveImage.File.$error.required">Please select a File.</span>
+                    <span ng-show="frmSaveImage.File.$error.pattern">Please select a File of type Image.</span>
+                    <br class="clearfix" />
+                </span>
             </div>
         </div>
         <div ng-if="model.File">
@@ -22,10 +30,10 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="col-md-offset-3 col-md-9">
-                    <input type="submit" value="Save" class="btn btn-primary" />
-                </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-3 col-md-9">
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </div>
     </form>

@@ -84,8 +84,21 @@ namespace AngularPhotoGallery.Web.Controllers
         }
 
         // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
+        [HttpPost]
+        [Route("updateImage/{id}")]
+        public IHttpActionResult Put(int id, [FromBody]Photo model)
         {
+            var photo = photos.FirstOrDefault(p => p.Id == id);
+            if (photo == null)
+            {
+                return BadRequest();
+            }
+
+            photo.Title = model.Title;
+            photo.Description = model.Description;
+            photo.DateModified = DateTime.Now;
+
+            return Ok(photo);
         }
 
         [HttpPost]

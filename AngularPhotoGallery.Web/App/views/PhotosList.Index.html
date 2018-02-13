@@ -12,15 +12,21 @@
                 <div class="panel-heading">
                     <h3 class="panel-title">{{i.Title}}</h3>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body" style="height: 325px; overflow: auto;">
                     <img ng-src="/Images/{{i.ImageUrl}}" class="img-thumbnail" />
                     <p>
-                        Date Created: {{i.DateCreated | date: dateFormat}}
+                        Created: {{i.DateCreated | date: dateFormat}}
+                        <span ng-if="i.DateModified">
+                            Modified: {{i.DateModified | date: dateFormat}}
+                        </span>
+                    </p>
+                    <p ng-if="i.Description">
+                        <i>{{i.Description}}</i> 
                     </p>
                 </div>
                 <div class="panel-footer">
                     <p>
-                        <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-pencil"></span></button>
+                        <button type="button" class="btn btn-info" ng-click="editImage(i)"><span class="glyphicon glyphicon-pencil"></span></button>
                         <button type="button" class="btn btn-danger" ng-click="deleteImage(i)"><span class="glyphicon glyphicon-trash"></span></button>
                     </p>
                 </div>

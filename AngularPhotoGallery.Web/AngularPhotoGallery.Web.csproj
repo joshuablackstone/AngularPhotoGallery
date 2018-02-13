@@ -161,12 +161,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\config.js" />
+    <Content Include="App\controllers\PhotosListEditController.js" />
     <Content Include="App\controllers\PhotosListCreateController.js" />
     <Content Include="App\controllers\PhotosListIndexController.js" />
     <Content Include="App\main.js" />
     <Content Include="App\services\PhotosListService.js" />
     <Content Include="App\tests\PhotosListControllerSpec.js" />
     <Content Include="App\views\pagination.html" />
+    <Content Include="App\views\PhotosList.Edit.html" />
     <Content Include="App\views\PhotosList.Create.html" />
     <Content Include="App\views\PhotosList.Index.html" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -181,11 +183,11 @@
     <Content Include="Images\Chrysanthemum.jpg" />
     <Content Include="Images\Desert.jpg" />
     <Content Include="Images\Hydrangeas.jpg" />
+    <Content Include="Images\IMG_0001.JPG" />
     <Content Include="Images\Jellyfish.jpg" />
     <Content Include="Images\Koala.jpg" />
     <Content Include="Images\Lighthouse.jpg" />
     <Content Include="Images\Penguins.jpg" />
-    <Content Include="Images\Tulips.jpg" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />

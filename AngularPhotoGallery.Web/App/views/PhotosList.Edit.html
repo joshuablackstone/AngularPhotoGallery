@@ -1,0 +1,44 @@
+﻿<div class="modal-header">
+    <button type="button" ng-click="cancel()" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h3 class="modal-title">Edit Photo</h3>
+</div>
+<div class="modal-body">
+    <form name="frmEditImage" class="form-horizontal" role="form" ng-submit="saveImage(frmEditImage)" novalidate>
+        <div class="form-group">
+            <label class="control-label col-md-3">
+                Title
+                <span class="text-danger" ng-if="frmEditImage.Title.$error.required">
+                    *
+                </span>
+            </label>
+            <div class="col-md-9">
+                <input type="text" name="Title" class="form-control" ng-model="model.Title" ng-maxlength="50" ng-required="true" />
+                <span class="error-message" ng-show="!frmEditImage.Title.$valid && frmEditImage.$submitted">
+                    <span ng-show="frmEditImage.Title.$error.required">Title is required.</span>
+                    <span ng-show="frmEditImage.Title.$error.maxlength">Title is over the character limit.</span>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3">
+                Description
+                <span class="text-danger" ng-if="frmEditImage.Description.$error.required">
+                    *
+                </span>
+            </label>
+            <div class="col-md-9">
+                <textarea name="Description" class="form-control" ng-model="model.Description" ng-maxlength="250" ng-required="false"></textarea>
+                <span class="error-message" ng-show="!frmEditImage.Description.$valid && frmEditImage.$submitted">
+                    <span ng-show="frmEditImage.Description.$error.required">Description is required.</span>
+                    <span ng-show="frmEditImage.Description.$error.maxlength">Description is over the character limit.</span>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-3 col-md-9">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="button" value="Cancel" ng-click="cancel()" class="btn btn-default" />
+            </div>
+        </div>
+    </form>
+</div>

@@ -15,6 +15,16 @@
                 console.error(error.data);
             });
 
+           
+
+            $scope.deleteImage = function (image) {
+                PhotosListService.deletePhoto(image.Id).then(function () {
+                    $scope.photos.splice($scope.photos.indexOf(image), 1);
+                }, function (error) {
+                    console.error(error.data);
+                });
+            };
+
             $scope.addImage = function () {
                 var modalInstance = $uibModal.open({
                     animation: false,
@@ -37,11 +47,40 @@
                 });
             };
 
-            $scope.deleteImage = function (image) {
-                PhotosListService.deletePhoto(image.Id).then(function () {
-                    $scope.photos.splice($scope.photos.indexOf(image), 1);
-                }, function (error) {
-                    console.error(error.data);
+            $scope.editImage = function (e) {
+                var originalPhoto = angular.copy(e);
+
+                var modalInstance = $uibModal.open({
+                    animation: false,
+                    templateUrl: '/App/views/PhotosList.Edit.html',
+                    controller: 'PhotosListEditController',
+                    size: 'lg',
+                    resolve: {
+                        model: function () {
+                          // return e;
+                           return originalPhoto;
+                        }
+                    }
+                });
+
+                modalInstance.result.then(function (model) {
+                    if (model) {
+                        PhotosListService.editPhoto(model).then(function (data) {
+                            var _photo = data.data;
+                            e.Title = _photo.Title;
+                            e.Description = _photo.Description;
+                            e.DateModified = _photo.DateModified;
+                            alert('Your photo has been saved successfully.');
+                        }, function (error) {
+                            console.error(error.data);
+                            alert('Error saving your photo :(.');
+                        });
+                    }
+                }, function () {
+                    //var photos = $scope.photos || [];
+                    //var index = photos.indexOf(e);
+                    //photos[index] = originalPhoto;
+                    console.log('Modal dismissed at: ' + new Date());
                 });
             };
         }]);

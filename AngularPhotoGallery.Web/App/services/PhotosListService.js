@@ -18,6 +18,9 @@
                             data: { file: file }
                         });
                 },
+                editPhoto: function (data) {
+                    return $http.post(apiUrl + "/updateImage/" + data.Id, angular.toJson(data));
+                },
                 deletePhoto: function (id) {
                     return $http.post(apiUrl + "/deleteImage/" + id);
                 }
