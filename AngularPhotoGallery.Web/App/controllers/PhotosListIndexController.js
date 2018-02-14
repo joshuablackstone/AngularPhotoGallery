@@ -3,8 +3,8 @@
 
     var photosApp = angular.module('photosApp');
 
-    photosApp.controller('PhotosListController', ['$scope', 'PhotosListService', '$uibModal', 'dateFormat',
-        function ($scope, PhotosListService, $uibModal, dateFormat) {
+    photosApp.controller('PhotosListController', ['$scope', 'PhotosListService', '$rootScope', '$uibModal', 'dateFormat',
+        function ($scope, PhotosListService, $rootScope, $uibModal, dateFormat) {
             $scope.title = 'Hello World';
             $scope.photos = [];
             $scope.dateFormat = dateFormat;
@@ -15,7 +15,12 @@
                 console.error(error.data);
             });
 
-           
+            /*
+                Listen to other controller using $scope.$on key value pair to return function of data passed into parameter
+            */
+            $rootScope.$on('joshListeningTest', function (e, dt) {
+                alert('Data sent by $emit to Index Controller: ' + dt);
+            });
 
             $scope.deleteImage = function (image) {
                 PhotosListService.deletePhoto(image.Id).then(function () {

@@ -3,7 +3,7 @@
 
     var photosApp = angular.module('photosApp');
 
-    photosApp.controller('PhotosListEditController', ['$scope', '$uibModalInstance', 'model', function ($scope, $uibModalInstance, model) {
+    photosApp.controller('PhotosListEditController', ['$scope', '$rootScope', '$uibModalInstance', 'model', function ($scope, $rootScope, $uibModalInstance, model) {
         $scope.model = model;
 
         $scope.saveImage = function (form) {
@@ -14,6 +14,13 @@
 
         $scope.cancel = function () {
             $uibModalInstance.dismiss('cancel');
+        };
+
+        /*
+        Send data to other controller using $scope.$emit key value pair
+        */
+        $scope.testSendEmit = function () {
+            $rootScope.$emit('joshListeningTest', new Date().toDateString());
         };
     }]);
 })();
