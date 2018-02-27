@@ -25,10 +25,10 @@ namespace AngularPhotoGallery.Web
                       "~/Content/site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular")
-                .Include("~/Scripts/angular.js", "~/Scripts/angular-ui/ui-bootstrap-tpls.js", "~/Scripts/ng-file-upload-shim.min.js", "~/Scripts/ng-file-upload.min.js", "~/Scripts/dirPagination.js"));
+                .Include("~/Scripts/angular.js", "~/Scripts/angular-route.js", "~/Scripts/angular-ui/ui-bootstrap-tpls.js", "~/Scripts/ng-file-upload-shim.min.js", "~/Scripts/ng-file-upload.min.js", "~/Scripts/dirPagination.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/photoApp")
-                .Include("~/App/main.js", "~/App/config.js")
+                .Include("~/App/main.js", "~/App/config.js", "~/App/routes.js")
                 .IncludeDirectory("~/App/services", "*.js", false)
                 .IncludeDirectory("~/App/controllers", "*.js", false));
         }

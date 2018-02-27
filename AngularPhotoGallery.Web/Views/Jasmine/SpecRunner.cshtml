@@ -1,8 +1,8 @@
 @{
-  Layout = null;
+    Layout = null;
 }
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-  "http://www.w3.org/TR/html4/loose.dtd">
+          "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
     <title>Jasmine Spec Runner</title>
@@ -12,20 +12,20 @@
     <script type="text/javascript" src="~/Scripts/jasmine/jasmine.js"></script>
     <script type="text/javascript" src="~/Scripts/jasmine/jasmine-html.js"></script>
     <script type="text/javascript" src="~/Scripts/jasmine/boot.js"></script>
-    <script src="~/Scripts/angular.js"></script>
+    @Scripts.Render("~/bundles/angular")
     <script src="~/Scripts/angular-mocks.js"></script>
 
     <script src="~/App/main.js"></script>
-    <script src="~/App/controllers/PhotosListController.js"></script>
-    <script src="~/App/tests/PhotosListControllerSpec.js"></script>
-    <!-- include source files here...
-    <script type="text/javascript" src="/Scripts/jasmine-samples/SpecHelper.js"></script>
-    <script type="text/javascript" src="/Scripts/jasmine-samples/PlayerSpec.js"></script>-->
-    <!-- include spec files here...
-    <script type="text/javascript" src="/Scripts/jasmine-samples/Player.js"></script>
-    <script type="text/javascript" src="/Scripts/jasmine-samples/Song.js"></script>-->
-</head>
+    <script src="~/App/config.js"></script>
+    <script src="~/App/services/PhotosListService.js"></script>
+    @*Controllers*@
+    <script src="~/App/controllers/PhotosListIndexController.js"></script>
+    <script src="~/App/controllers/PhotosListEditController.js"></script>
 
+    @*Specs/Tests*@
+    <script src="~/App/tests/PhotosListControllerSpec.js"></script>
+    <script src="~/App/tests/PhotosListEditControllerSpec.js"></script>
+</head>
 <body>
 </body>
 </html>

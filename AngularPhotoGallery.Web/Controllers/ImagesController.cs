@@ -15,7 +15,7 @@ namespace AngularPhotoGallery.Web.Controllers
     [RoutePrefix("api/images")]
     public class ImagesController : ApiController
     {
-        protected ObservableCollection<Photo> photos = new ObservableCollection<Photo>();
+        protected static ObservableCollection<Photo> photos = new ObservableCollection<Photo>();
         protected string localPath = string.Empty;
 
         public ImagesController()
@@ -24,7 +24,11 @@ namespace AngularPhotoGallery.Web.Controllers
             var _photos = GetPhotos();
             foreach (var photo in _photos)
             {
-                photos.Add(photo);
+                var exists = photos.FirstOrDefault(p => p.Id == photo.Id);
+                if (exists == null)
+                {
+                    photos.Add(photo);
+                }
             }
         }
 

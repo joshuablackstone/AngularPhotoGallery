@@ -11,6 +11,9 @@
                 getPhotos: function () {
                    return $http.get(apiUrl);
                 },
+                getPhoto: function (id) {
+                    return $http.get(apiUrl + "/" + id);
+                },
                 postPhoto: function (file) {
                     return Upload.upload(
                         {
