@@ -14,11 +14,11 @@
                 getPhoto: function (id) {
                     return $http.get(apiUrl + "/" + id);
                 },
-                postPhoto: function (file) {
+                postPhoto: function (data) {
                     return Upload.upload(
                         {
                             url: apiUrl + "/createImage",
-                            data: { file: file }
+                            data: { file: data.File, model: angular.toJson(data) }
                         });
                 },
                 editPhoto: function (data) {

@@ -7,6 +7,7 @@
         function ($scope, PhotosListService, dateFormat) {
             $scope.title = 'Hello World';
             $scope.photos = [];
+            $scope.filters = {};
             $scope.dateFormat = dateFormat;
 
             PhotosListService.getPhotos().then(function (response) {

@@ -6,9 +6,7 @@
     photosApp.controller('PhotosListEditController', ['$scope', 'model', '$location', 'PhotosListService', function ($scope, model, $location, PhotosListService) {
         $scope.model = model;
 
-        $scope.saveImage = function (form) {
-            if (!form.$valid) return false;
-
+        $scope.saveImage = function () {
             PhotosListService.editPhoto(model).then(function (data) {
                 alert('Your photo has been saved successfully.');
                 $location.path('/list');

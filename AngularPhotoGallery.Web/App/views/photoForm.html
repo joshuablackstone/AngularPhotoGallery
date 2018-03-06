@@ -1,0 +1,39 @@
+﻿<form name="frmSaveImage" class="form-horizontal" role="form" ng-submit="savePhoto(frmSaveImage)" novalidate>
+    <span ng-transclude></span>
+    <div class="form-group">
+        <label class="control-label col-md-3">
+            Title
+            <span class="text-danger" ng-if="frmSaveImage.Title.$error.required">
+                *
+            </span>
+        </label>
+        <div class="col-md-9">
+            <input type="text" name="Title" class="form-control" ng-model="model.Title" ng-maxlength="50" ng-required="true" />
+            <span class="error-message" ng-show="!frmSaveImage.Title.$valid && frmSaveImage.$submitted">
+                <span ng-show="frmSaveImage.Title.$error.required">Title is required.</span>
+                <span ng-show="frmSaveImage.Title.$error.maxlength">Title is over the character limit.</span>
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-3">
+            Description
+            <span class="text-danger" ng-if="frmSaveImage.Description.$error.required">
+                *
+            </span>
+        </label>
+        <div class="col-md-9">
+            <textarea name="Description" class="form-control" ng-model="model.Description" ng-maxlength="250" ng-required="false"></textarea>
+            <span class="error-message" ng-show="!frmSaveImage.Description.$valid && frmSaveImage.$submitted">
+                <span ng-show="frmSaveImage.Description.$error.required">Description is required.</span>
+                <span ng-show="frmSaveImage.Description.$error.maxlength">Description is over the character limit.</span>
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-3 col-md-9">
+            <input type="submit" value="Save" ng-disabled="frmSaveImage.$invalid" class="btn btn-primary" />
+            <a class="btn btn-default" ng-href="#/list">Cancel</a>
+        </div>
+    </div>
+</form>

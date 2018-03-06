@@ -2,37 +2,25 @@
     <div class="row">
         <div class="col-md-12">
             <br class="clearfix" /><br class="clearfix" />
-            <!--<button type="button" ng-click="addImage()" class="btn btn-primary">Add Image</button>-->
             <a ng-href="#/create" class="btn btn-primary">Add Image</a>
             <br class="clearfix" /><br class="clearfix" />
         </div>
     </div>
-    <div ng-cloak class="row">
-        <div class="col-sm-6 col-md-4" dir-paginate="i in photos | itemsPerPage: 6" pagination-id="pagerImages">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">{{i.Title}}</h3>
-                </div>
-                <div class="panel-body" style="height: 325px; overflow: auto;">
-                    <img ng-src="/Images/{{i.ImageUrl}}" class="img-thumbnail" />
-                    <p>
-                        Created: {{i.DateCreated | date: dateFormat}}
-                        <span ng-if="i.DateModified">
-                            Modified: {{i.DateModified | date: dateFormat}}
-                        </span>
-                    </p>
-                    <p ng-if="i.Description">
-                        <i>{{i.Description}}</i> 
-                    </p>
-                </div>
-                <div class="panel-footer">
-                    <p>
-                        <!--<button type="button" class="btn btn-info" ng-click="editImage(i)"><span class="glyphicon glyphicon-pencil"></span></button>-->
-                        <a class="btn btn-info" ng-href="#/edit/{{i.Id}}"><span class="glyphicon glyphicon-pencil"></span></a>
-                        <button type="button" class="btn btn-danger" ng-click="deleteImage(i)"><span class="glyphicon glyphicon-trash"></span></button>
-                    </p>
+    <div class="row">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-md-2">Search</label>
+                <div class="col-md-10">
+                    <input type="search" ng-model="filters.Title" placeholder="Type to Search Title" class="form-control"
+                           ng-model-options="{ updateOn: 'blur' }"
+                           name="filterTitle" />
                 </div>
             </div>
+        </div>
+    </div>
+    <div ng-cloak class="row">
+        <div class="col-sm-6 col-md-4" dir-paginate="i in photos | orderBy: 'DateModified' | filter: filters | itemsPerPage: 6" pagination-id="pagerImages">
+            <photo-panel model="i" on-delete="deleteImage(i)"></photo-panel>
         </div>
     </div>
     <div class="row">

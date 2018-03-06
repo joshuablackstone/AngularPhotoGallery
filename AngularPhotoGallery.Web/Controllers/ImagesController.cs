@@ -1,4 +1,5 @@
 ﻿using AngularPhotoGallery.Web.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Hosting;
 using System.Web.Http;
 
@@ -57,6 +59,17 @@ namespace AngularPhotoGallery.Web.Controllers
         [HttpPost]
         public async Task<IHttpActionResult> Post()
         {
+            var request = HttpContext.Current.Request;
+            var _model = request.Form["model"];
+            Photo model = JsonConvert.DeserializeObject<Photo>(_model);
+
+            this.Validate(model);
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             if (!Directory.Exists(localPath)) { Directory.CreateDirectory(localPath); }
 
             if (!Request.Content.IsMimeMultipartContent())
@@ -77,7 +90,8 @@ namespace AngularPhotoGallery.Web.Controllers
             var photo = new Photo()
             {
                 Id = photos.Select(p => p.Id).Max() + 1,
-                Title = fileName,
+                Title = model.Title == null ? fileName : model.Title,
+                Description = model.Description,
                 ImageUrl = fileName,
                 DateCreated = DateTime.Now
             };
