@@ -5,7 +5,7 @@
 
     photosApp.controller('PhotosListController', ['$scope', 'PhotosListService', 'dateFormat',
         function ($scope, PhotosListService, dateFormat) {
-            $scope.title = 'Hello World';
+            // $scope.title = 'Hello World';
             $scope.photos = [];
             $scope.filters = {};
             $scope.dateFormat = dateFormat;

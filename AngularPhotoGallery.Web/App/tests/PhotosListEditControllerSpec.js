@@ -28,7 +28,7 @@
         // String of 50+ characters shouldnt be allowed
         $scope.form.Title.$setViewValue('Lorem ipsum dolor sit amet, consectetur adipiscinge');
         $scope.$digest();
-        console.log($scope.model);
+        //console.log($scope.model);
         expect($scope.form.$valid).toBeFalsy();
         expect($scope.model.Title).toBe(undefined);
     });
@@ -37,20 +37,20 @@
         // String of 250+ characters shouldnt be allowed
         $scope.form.Description.$setViewValue('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
         $scope.$digest();
-        console.log($scope.model);
+        //console.log($scope.model);
         expect($scope.form.$valid).toBeFalsy();
         expect($scope.model.Description).toBe(undefined);
     });
 
-    it('should update photo of ID 1', function () {
-        $scope.form.Title.$setViewValue('NewTitle');
-        $scope.$digest();
-        expect($scope.form.$valid).toBeTruthy();
+    //it('should update photo of ID 1', function () {
+    //    $scope.form.Title.$setViewValue('NewTitle');
+    //    $scope.$digest();
+    //    expect($scope.form.$valid).toBeTruthy();
 
-        httpBackend.expectPOST(serviceUrl + "/updateImage/" + _model.Id, _model).respond(200, _model);
-        $scope.saveImage($scope.form);
-        httpBackend.flush();
+    //    httpBackend.expectPOST(serviceUrl + "/updateImage/" + _model.Id, _model).respond(200, _model);
+    //    $scope.saveImage($scope.form);
+    //    httpBackend.flush();
 
-        expect($scope.model.Title).toBe("NewTitle");
-    });
+    //    expect($scope.model.Title).toBe("NewTitle");
+    //});
 });

@@ -170,6 +170,7 @@
     <Content Include="App\main.js" />
     <Content Include="App\routes.js" />
     <Content Include="App\services\PhotosListService.js" />
+    <Content Include="App\tests\FiltersSpec.js" />
     <Content Include="App\tests\PhotosListEditControllerSpec.js" />
     <Content Include="App\tests\PhotosListControllerSpec.js" />
     <Content Include="App\views\pagination.html" />
