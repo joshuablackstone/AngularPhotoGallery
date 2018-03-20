@@ -22,9 +22,9 @@
         ctrl = $controller('PhotosListController', { $scope: $scope });
     }));
 
-    //it('should return value for title', function () {
-    //    expect($scope.title).toBeDefined();
-    //});
+    it('should return value for title', function () {
+        expect($scope.title).toBe('Hello World');
+    });
 
     it('should return ordered list of photos', function () {
         httpBackend.flush();

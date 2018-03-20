@@ -7,13 +7,10 @@
 
     beforeEach(inject(function ($controller, $rootScope, $httpBackend, $templateCache, $location, $compile) {
         httpBackend = $httpBackend;
-        httpBackend
-            .when('POST', serviceUrl + "/updateImage/" + _model.Id, _model)
-            .respond(200, { data: _model });
-
         $scope = $rootScope.$new();
         ctrl = $controller('PhotosListEditController', { $scope: $scope, model: _model });
 
+        // $scope.form = form because the form name below is 'form'.  If it was named frmImage, it would be $scope.frmImage :).
         var element = angular.element(
             '<form name="form">' +
             '<input type="text" name="Title" class="form-control" ng-model="model.Title" ng-maxlength="50" ng-required="true" />' +
@@ -42,15 +39,15 @@
         expect($scope.model.Description).toBe(undefined);
     });
 
-    //it('should update photo of ID 1', function () {
-    //    $scope.form.Title.$setViewValue('NewTitle');
-    //    $scope.$digest();
-    //    expect($scope.form.$valid).toBeTruthy();
+    it('should update photo of ID 1', function () {
+        $scope.form.Title.$setViewValue('NewTitle');
+        $scope.$digest();
+        expect($scope.form.$valid).toBeTruthy();
 
-    //    httpBackend.expectPOST(serviceUrl + "/updateImage/" + _model.Id, _model).respond(200, _model);
-    //    $scope.saveImage($scope.form);
-    //    httpBackend.flush();
+        httpBackend.expectPOST(serviceUrl + "/updateImage/" + _model.Id, _model).respond(200, _model);
+        $scope.saveImage($scope.form);
+        httpBackend.flush();
 
-    //    expect($scope.model.Title).toBe("NewTitle");
-    //});
+        expect($scope.model.Title).toBe("NewTitle");
+    });
 });
