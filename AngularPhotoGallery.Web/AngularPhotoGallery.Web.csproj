@@ -165,6 +165,7 @@
     <Content Include="App\controllers\PhotosListCreateController.js" />
     <Content Include="App\controllers\PhotosListIndexController.js" />
     <Content Include="App\controllers\PhotosListShellController.js" />
+    <Content Include="App\customErrorHandler.js" />
     <Content Include="App\directives.js" />
     <Content Include="App\filters.js" />
     <Content Include="App\main.js" />
@@ -175,6 +176,7 @@
     <Content Include="App\tests\PhotosListControllerSpec.js" />
     <Content Include="App\views\pagination.html" />
     <Content Include="App\views\photoForm.html" />
+    <Content Include="App\views\photoPanelAlternate.html" />
     <Content Include="App\views\photoPanel.html" />
     <Content Include="App\views\PhotosList.Edit.html" />
     <Content Include="App\views\PhotosList.Create.html" />

@@ -8,5 +8,5 @@
    NG File Upload: https://github.com/danialfarid/ng-file-upload 'ngFileUpload'
    */
 
-    var photosApp = angular.module('photosApp', ['ui.bootstrap', 'ngRoute', 'ngFileUpload', 'angularUtils.directives.dirPagination', 'customFilters', 'customDirectives']);
+    var photosApp = angular.module('photosApp', ['ui.bootstrap', 'ngRoute', 'ngFileUpload', 'angularUtils.directives.dirPagination', 'customFilters', 'customDirectives', 'customErrors']);
 })();

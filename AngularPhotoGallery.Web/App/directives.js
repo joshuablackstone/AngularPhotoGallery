@@ -3,10 +3,28 @@
 
     var app = angular.module('customDirectives', ['customFilters']);
 
-    app.directive('photoPanel', function () {
+    app.provider('photoPanelTemplate', function () {
+        var templatePath = '/App/views/photoPanel.html';
+
+        this.setPath = function (path) {
+            templatePath = path;
+        };
+
+        this.$get = function () {
+            return {
+                getPath: function () {
+                    return templatePath;
+                }
+            };
+        };
+    });
+
+    app.directive('photoPanel', ['photoPanelTemplate', function (photoPanelTemplate) {
         return {
             restrict: 'E,A', 
-            templateUrl: '/App/views/photoPanel.html',
+            templateUrl: function (elem, attrs) {
+                return attrs.templateUrl || photoPanelTemplate.getPath();
+            },
             scope: {
                 model: '=', // Or @ if one way binding
                 onDelete: '&'
@@ -22,7 +40,7 @@
                 };
             }
         }
-    });
+    }]);
 
     app.directive('photoForm', function () {
         return {

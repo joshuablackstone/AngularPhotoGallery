@@ -16,14 +16,20 @@
                            name="filterTitle" />
                 </div>
             </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="button" ng-click="sortByTitle('Title')">Sort By Title {{sortAscending ? 'Ascending' : 'Descending'}}</button>
+                </div>
+            </div>
         </div>
     </div>
     <div ng-cloak class="row">
-        <div class="col-sm-6 col-md-4" dir-paginate="i in photos | orderBy: 'DateModified' | filter: filters | itemsPerPage: 6" pagination-id="pagerImages">
+        <div class="col-sm-6 col-md-4" dir-paginate="i in photos | orderBy: sortOrder : sortAscending | filter: filters | itemsPerPage: 6" pagination-id="pagerImages">
             <photo-panel model="i" on-delete="deleteImage(i)"></photo-panel>
+            <!--<photo-panel template-url="/App/views/photoPanel.html" model="i" on-delete="deleteImage(i)"></photo-panel>-->
         </div>
     </div>
     <div class="row">
         <dir-pagination-controls pagination-id="pagerImages"></dir-pagination-controls>
-    </div>
+    </div>    
 </div>
